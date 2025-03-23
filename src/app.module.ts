@@ -4,7 +4,10 @@ import { DbModule } from './db/db.module';
 import { UsersModule } from './users/users.module';
 import { MoviesModule } from './movies/movies.module';
 import { ConfigModule } from '@nestjs/config';
-import baseConfig from './config/base-config';
+import baseConfig, {
+  EnviromentEnum,
+  EnviromentFileEnum,
+} from './config/base-config';
 
 @Module({
   imports: [
@@ -15,7 +18,10 @@ import baseConfig from './config/base-config';
     ConfigModule.forRoot({
       isGlobal: true,
       load: [baseConfig],
-      envFilePath: process.env.ENV === 'prod' ? '.env.prod' : '.env.dev',
+      envFilePath:
+        process.env.ENV === EnviromentEnum.PROD
+          ? EnviromentFileEnum.PROD
+          : EnviromentFileEnum.DEV,
     }),
   ],
 })
