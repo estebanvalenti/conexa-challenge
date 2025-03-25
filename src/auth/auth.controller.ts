@@ -15,7 +15,7 @@ export class AuthController {
   })
   @ApiBody({ type: LoginDto })
   @ApiResponse({
-    status: HttpStatus.OK,
+    status: HttpStatus.CREATED,
     description: 'User successfully logged in.',
     type: LoginResponseDto,
   })

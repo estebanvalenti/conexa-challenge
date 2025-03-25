@@ -43,13 +43,14 @@ export class MoviesService {
   async fetchAndUpsertMovies(): Promise<FetchAndUpsertMoviesResponseDto> {
     try {
       const response = await fetch(`${BASE_SWAPI_URL}/films`);
+
       const data = await response.json();
 
       if (!data || !data.results) {
         throw new Error('Failed to fetch movies from SWAPI');
       }
 
-      const movies = data.results || data.movies;
+      const movies = data.results;
 
       const bulkOps = movies.map((movieData) => ({
         updateOne: {

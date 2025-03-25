@@ -1,24 +1,41 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
+import { INestApplication, ValidationPipe } from '@nestjs/common';
 import * as request from 'supertest';
-import { AppModule } from './../src/app.module';
+import { AppModule } from '../src/app.module';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
-describe('AppController (e2e)', () => {
+describe('Swagger E2E', () => {
   let app: INestApplication;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
 
     app = moduleFixture.createNestApplication();
+
+    app.useGlobalPipes(new ValidationPipe());
+
+    const config = new DocumentBuilder()
+      .setTitle('Conexa challenge')
+      .addBearerAuth()
+      .build();
+    const documentFactory = () => SwaggerModule.createDocument(app, config);
+    SwaggerModule.setup('api', app, documentFactory);
+
     await app.init();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+  afterAll(async () => {
+    await app.close();
+  });
+
+  it('should serve the Swagger page at /api', async () => {
+    const response = await request(app.getHttpServer())
+      .get('/api')
+      .expect('Content-Type', /html/)
+      .expect(200);
+
+    expect(response.text).toContain('Swagger UI');
   });
 });
