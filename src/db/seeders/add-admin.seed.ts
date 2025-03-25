@@ -16,7 +16,7 @@ export class AdminSeedsService {
   ) {}
 
   async seedAdminUser() {
-    if (process.env.NODE_ENV === EnviromentEnum.PROD) {
+    if (process.env.ENV === EnviromentEnum.DEV) {
       try {
         const password = await this.userService.hashpassword('admin');
         const user: User = {
