@@ -22,3 +22,5 @@ export enum EnviromentFileEnum {
 
 export const PASSWORD_REGEX =
   /^(?=.*[0-9])(?=.*[!@#$%/^&*])[a-zA-Z0-9!@#$%/^&*]{8,50}$/;
+
+export const BASE_SWAPI_URL = 'https://swapi.dev/api';

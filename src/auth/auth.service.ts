@@ -14,6 +14,7 @@ export class AuthService {
   ) {}
 
   async login({ username, password }: LoginDto): Promise<LoginResponseDto> {
+    username = username.toLowerCase();
     const user = await this.usersService.findOne({ username });
 
     if (!user) {

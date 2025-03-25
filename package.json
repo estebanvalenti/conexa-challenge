@@ -8,7 +8,7 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
+    "start": "npm run start:docker && nest start",
     "start:docker": "cd src/misc/db/mongodb && docker-compose up -d",
     "start:dev": "npm run start:docker && nest start --watch",
     "start:debug": "nest start --debug --watch",
@@ -27,6 +27,7 @@
     "@nestjs/jwt": "^11.0.0",
     "@nestjs/mongoose": "^11.0.2",
     "@nestjs/platform-express": "^11.0.12",
+    "@nestjs/schedule": "^5.0.1",
     "@nestjs/swagger": "^11.0.7",
     "bcrypt": "^5.1.1",
     "class-transformer": "^0.5.1",
