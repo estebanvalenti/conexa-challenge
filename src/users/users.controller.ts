@@ -3,6 +3,7 @@ import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { AuthPayloadDto } from 'src/auth/dto/auth-payload.dto';
+import { ApiErrorResponses } from 'src/common/commons.decorator';
 
 @ApiTags('users')
 @Controller('users')
@@ -16,10 +17,10 @@ export class UsersController {
     description: 'User successfully registered',
     type: AuthPayloadDto,
   })
-  @ApiResponse({ status: HttpStatus.BAD_REQUEST, description: 'Bad request' })
+  @ApiErrorResponses()
   @ApiResponse({
-    status: HttpStatus.INTERNAL_SERVER_ERROR,
-    description: 'Internal Server Error',
+    status: HttpStatus.CONFLICT,
+    description: 'Email or username already exists',
   })
   @Post('register')
   async register(

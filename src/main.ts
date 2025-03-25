@@ -2,9 +2,12 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import { SeedersService } from './db/seeders/seeders.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const seeder = app.get(SeedersService);
+  seeder.seed();
   app.useGlobalPipes(new ValidationPipe());
   const config = new DocumentBuilder()
     .setTitle('Conexa challenge')

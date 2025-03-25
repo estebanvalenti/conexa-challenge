@@ -1,6 +1,6 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { FilterQuery, Model } from 'mongoose';
 import { User, UserDocument } from 'src/schemas/user.schema';
 import { CreateUserDto } from './dto/create-user.dto';
 import { AuthPayloadDto } from 'src/auth/dto/auth-payload.dto';
@@ -19,6 +19,7 @@ export class UsersService {
     private readonly userModel: Model<User>,
   ) {}
   async create(createUserDto: CreateUserDto): Promise<AuthPayloadDto> {
+    createUserDto.username = createUserDto.username.toLowerCase();
     const user: User = await this.findOne({
       username: createUserDto.username,
       email: createUserDto.email,
@@ -38,8 +39,11 @@ export class UsersService {
   }
 
   async findOne(filter: IFilterUser): Promise<UserDocument | null> {
-    const query = filter;
-    return await this.userModel.findOne(query).exec();
+    const query: FilterQuery<User> = {
+      $or: [{ username: filter.username }, { email: filter.email }],
+    };
+
+    return await this.userModel.findOne(query);
   }
 
   async hashpassword(password: string): Promise<string> {

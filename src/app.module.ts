@@ -8,6 +8,9 @@ import baseConfig, {
   EnviromentEnum,
   EnviromentFileEnum,
 } from './config/base-config';
+import { ScheduleModule } from '@nestjs/schedule';
+import { SeedersModule } from './db/seeders/seeders.module';
+import { SyncModule } from './sync/sync.module';
 
 @Module({
   imports: [
@@ -15,6 +18,9 @@ import baseConfig, {
     DbModule,
     UsersModule,
     MoviesModule,
+    SeedersModule,
+    SyncModule,
+    ScheduleModule.forRoot(),
     ConfigModule.forRoot({
       isGlobal: true,
       load: [baseConfig],
