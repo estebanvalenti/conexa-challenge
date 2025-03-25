@@ -7,7 +7,7 @@ import {
   Length,
 } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { PASSWORD_REGEX } from 'src/config/base-config';
+import { PASSWORD_REGEX } from '../../config/base-config';
 
 export class CreateUserDto {
   @ApiProperty()

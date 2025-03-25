@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from 'src/schemas/user.schema';
+import { User, UserSchema } from '../../schemas/user.schema';
 import { AdminSeedsService } from './add-admin.seed';
 import { SeedersService } from './seeders.service';
-import { UsersModule } from 'src/users/users.module';
+import { UsersModule } from '../../users/users.module';
 import { DbModule } from '../db.module';
 
 @Module({

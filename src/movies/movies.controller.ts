@@ -17,14 +17,14 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/auth/guards/auth.guard';
-import { RolesGuard } from 'src/auth/guards/role.guard';
-import { RoleEnum } from 'src/config/base-config';
-import { Roles } from 'src/auth/decorators/role.decorator';
+import { JwtAuthGuard } from '../auth/guards/auth.guard';
+import { RolesGuard } from '../auth/guards/role.guard';
+import { RoleEnum } from '../config/base-config';
+import { Roles } from '../auth/decorators/role.decorator';
 import { GetMovieQueryParamsDto } from './dto/get-movie-query-params.dto';
-import { Movie } from 'src/schemas/movies.schema';
+import { Movie } from '../schemas/movies.schema';
 import { UpdateMovieParamsDto } from './dto/update-movie.dto';
-import { ApiErrorResponses } from 'src/common/commons.decorator';
+import { ApiErrorResponses } from '../common/commons.decorator';
 import { FetchAndUpsertMoviesResponseDto } from './dto/sync-movie.dto';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { MovieResponseDto } from './dto/movie-response.dto';

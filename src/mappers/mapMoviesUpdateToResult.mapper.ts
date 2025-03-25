@@ -1,4 +1,4 @@
-import { FetchAndUpsertMoviesResponseDto } from 'src/movies/dto/sync-movie.dto';
+import { FetchAndUpsertMoviesResponseDto } from '../movies/dto/sync-movie.dto';
 
 export function mapMoviesUpdateToResult(
   movies,

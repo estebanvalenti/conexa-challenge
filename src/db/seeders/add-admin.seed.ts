@@ -1,9 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { EnviromentEnum, RoleEnum } from 'src/config/base-config';
-import { User } from 'src/schemas/user.schema';
-import { UsersService } from 'src/users/users.service';
+import { EnviromentEnum, RoleEnum } from '../../config/base-config';
+import { User } from '../../schemas/user.schema';
+import { UsersService } from '../../users/users.service';
 
 @Injectable()
 export class AdminSeedsService {

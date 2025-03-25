@@ -1,5 +1,5 @@
-import { AuthPayloadDto } from 'src/auth/dto/auth-payload.dto';
-import { UserDocument } from 'src/schemas/user.schema';
+import { AuthPayloadDto } from '../auth/dto/auth-payload.dto';
+import { UserDocument } from '../schemas/user.schema';
 
 export function mapUserToPayload(user: UserDocument): AuthPayloadDto {
   return {
