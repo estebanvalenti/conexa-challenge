@@ -1,11 +1,11 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { FilterQuery, Model } from 'mongoose';
-import { User, UserDocument } from 'src/schemas/user.schema';
+import { User, UserDocument } from '../schemas/user.schema';
 import { CreateUserDto } from './dto/create-user.dto';
-import { AuthPayloadDto } from 'src/auth/dto/auth-payload.dto';
+import { AuthPayloadDto } from '../auth/dto/auth-payload.dto';
 import * as bcrypt from 'bcrypt';
-import { mapUserToPayload } from 'src/mappers/mapUserToPayload.mapper';
+import { mapUserToPayload } from '../mappers/mapUserToPayload.mapper';
 
 interface IFilterUser {
   username?: string;
@@ -30,11 +30,10 @@ export class UsersService {
 
     const hashedPassword = await this.hashpassword(createUserDto.password);
 
-    const newUser = new this.userModel({
+    const newUser = await this.userModel.create({
       ...createUserDto,
       password: hashedPassword,
     });
-    newUser.save();
     return mapUserToPayload(newUser);
   }
 

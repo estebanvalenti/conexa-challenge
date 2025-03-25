@@ -5,7 +5,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { RoleEnum } from 'src/config/base-config';
+import { RoleEnum } from '../../config/base-config';
 import { ROLES_KEY } from '../decorators/role.decorator';
 
 @Injectable()

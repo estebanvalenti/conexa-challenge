@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { RoleEnum } from 'src/config/base-config';
+import { RoleEnum } from '../../config/base-config';
 
 export class AuthPayloadDto {
   @ApiProperty()

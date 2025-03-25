@@ -16,17 +16,17 @@ export class UpdateMovieParamsDto {
   @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
-  opening_crawl: string;
+  opening_crawl?: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
-  director: string;
+  director?: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
-  producer: string;
+  producer?: string;
 
   @ApiProperty({ required: false })
   @IsOptional()

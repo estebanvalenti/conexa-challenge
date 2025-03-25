@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ScheduleModule } from '@nestjs/schedule';
-import { MoviesModule } from 'src/movies/movies.module';
+import { MoviesModule } from '../movies/movies.module';
 import { SyncMoviesService } from './sync.service';
 
 @Module({
