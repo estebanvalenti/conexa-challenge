@@ -35,19 +35,22 @@ username: admin
 passowrd: admin
 ```
 
-Once the project is running you can see the endpoint and the documentation in the [Swagger Endpoint](localhost:3000/api). Also, you can run the differents endpoint and authenticate.
+Once the project is running you can see the endpoint and the documentation in the
+[Swagger Endpoint](http://localhost:3000/api)
+Also, you can run the differents endpoint and authenticate.
 
 Daily if the project is working, at 12am GMT (or 9:00pm GMT-3) an cronjob will be executed locally in order to syncronize the locally database with the StarWars database.
 
 # watch mode
 
+```bash
 $ npm run start:dev
 
 # production mode
 
 $ npm run start:prod
 
-````
+```
 
 ## Run tests
 
@@ -60,4 +63,4 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
-````
+```
